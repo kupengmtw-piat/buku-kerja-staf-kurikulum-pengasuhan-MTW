@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Buku Kerja</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#00a83e">
+<meta name="description" content="Buku Kerja Staf Kurikulum Pengasuhan MTW">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Buku Kerja">
+<style>
+  html,body{margin:0;height:100%;background:#f0fff6;overflow:hidden;font-family:"Times New Roman",serif}
+  #app{position:fixed;inset:0;width:100%;height:100%;border:0;
+       padding-top:env(safe-area-inset-top);box-sizing:border-box;background:#f0fff6}
+  #muat{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#f0fff6;color:#1f2a26;z-index:2;transition:opacity .3s}
+  #muat img{width:96px;height:96px;border-radius:22px;box-shadow:0 6px 18px rgba(0,168,62,.25)}
+  #muat b{font-size:17px}
+  #muat .k{font-size:13px;color:#6b7a74;text-align:center;padding:0 24px;line-height:1.5}
+  #muat a{display:none;background:#00a83e;color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:10px;font-size:14px}
+  .putar{width:26px;height:26px;border:3px solid #cdf3da;border-top-color:#00a83e;border-radius:50%;animation:p 1s linear infinite}
+  @keyframes p{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div id="muat">
+  <img src="icon-192.png" alt="">
+  <b>Buku Kerja</b>
+  <div class="putar" id="putar"></div>
+  <div class="k" id="ket">Memuat…</div>
+  <a id="cadangan" href="#" target="_blank" rel="noopener">Buka di browser</a>
+</div>
+<iframe id="app" title="Buku Kerja" allow="clipboard-read; clipboard-write; fullscreen"></iframe>
+<script>
+  // ===== SATU-SATUNYA YANG PERLU DIISI: link web Buku Kerja (Deploy -> URL aplikasi web) =====
+  const ALAMAT_BUKU_KERJA = 'https://script.google.com/macros/s/AKfycbyjXNZFELNC2Bg19IA9Z9C4dEAoJOtb54vP5y7MCNp6vOG4b872nwmv7PQizCxq9hgUIQ/exec';
+  // ==========================================================================================
+  const app = document.getElementById('app'), muat = document.getElementById('muat');
+  const ket = document.getElementById('ket'), cad = document.getElementById('cadangan');
+  cad.href = ALAMAT_BUKU_KERJA;
+  if (!navigator.onLine) ket.textContent = 'Tidak ada internet. Buku Kerja akan terbuka begitu koneksi tersambung.';
+  let selesai = false;
+  app.addEventListener('load', function(){ selesai = true; muat.style.opacity = '0'; setTimeout(function(){ muat.style.display = 'none'; }, 300); });
+  app.src = ALAMAT_BUKU_KERJA;
+  setTimeout(function(){
+    if (selesai) return;
+    document.getElementById('putar').style.display = 'none';
+    ket.textContent = 'Sinyal lambat atau Buku Kerja belum termuat. Tunggu sebentar, atau buka lewat browser.';
+    cad.style.display = 'inline-block';
+  }, 20000);
+  window.addEventListener('online', function(){ if (!selesai) app.src = ALAMAT_BUKU_KERJA; });
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function(){});
+</script>
+</body>
+</html>
