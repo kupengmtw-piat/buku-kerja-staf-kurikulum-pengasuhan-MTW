@@ -4,8 +4,11 @@
 <meta charset="utf-8">
 <title>Buku Kerja</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#00a83e">
+<meta name="theme-color" content="#028d86">
 <meta name="description" content="Buku Kerja Staf Kurikulum Pengasuhan MTW">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -14,22 +17,23 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Buku Kerja">
 <style>
-  html,body{margin:0;height:100%;background:#f0fff6;overflow:hidden;font-family:"Times New Roman",serif}
+  @font-face{font-family:'TajawalLocal';src:url('tajawal-regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+  html,body{margin:0;height:100%;background:#eef8f7;overflow:hidden;font-family:Tajawal,TajawalLocal,Tahoma,Arial,sans-serif}
   #app{position:fixed;inset:0;width:100%;height:100%;border:0;
-       padding-top:env(safe-area-inset-top);box-sizing:border-box;background:#f0fff6}
-  #muat{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#f0fff6;color:#1f2a26;z-index:2;transition:opacity .3s}
-  #muat img{width:96px;height:96px;border-radius:22px;box-shadow:0 6px 18px rgba(0,168,62,.25)}
-  #muat b{font-size:17px}
-  #muat .k{font-size:13px;color:#6b7a74;text-align:center;padding:0 24px;line-height:1.5}
-  #muat a{display:none;background:#00a83e;color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:10px;font-size:14px}
-  .putar{width:26px;height:26px;border:3px solid #cdf3da;border-top-color:#00a83e;border-radius:50%;animation:p 1s linear infinite}
+       padding-top:env(safe-area-inset-top);box-sizing:border-box;background:#eef8f7}
+  #muat{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#eef8f7;color:#1f2a2a;z-index:2;transition:opacity .3s}
+  #muat img{width:96px;height:96px;border-radius:22px;box-shadow:0 6px 18px rgba(2,141,134,.28)}
+  #muat b{font-size:18px;font-weight:800;color:#037872;text-align:center;padding:0 24px;line-height:1.35;max-width:420px}
+  #muat .k{font-size:13px;color:#52706d;text-align:center;padding:0 24px;line-height:1.5}
+  #muat a{display:none;background:#037872;color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:10px;font-size:14px}
+  .putar{width:26px;height:26px;border:3px solid #c3e2df;border-top-color:#037872;border-radius:50%;animation:p 1s linear infinite}
   @keyframes p{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 <div id="muat">
   <img src="icon-192.png" alt="">
-  <b>Buku Kerja</b>
+  <b>Buku Kerja Staf Kurikulum Pengasuhan MTW</b>
   <div class="putar" id="putar"></div>
   <div class="k" id="ket">Memuat…</div>
   <a id="cadangan" href="#" target="_blank" rel="noopener">Buka di browser</a>
