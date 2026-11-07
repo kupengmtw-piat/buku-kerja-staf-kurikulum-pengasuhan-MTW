@@ -1,6 +1,6 @@
 // Service worker kecil: menyimpan "kulit" aplikasi (halaman pembuka & ikon) supaya bisa dipasang
 // dan tetap terbuka cepat. Isi Buku Kerja sendiri selalu diambil langsung dari Google (tidak di-cache).
-const CACHE = 'buku-kerja-v4';
+const CACHE = 'buku-kerja-v5';
 const KULIT = ['./', 'index.html', 'manifest.webmanifest', 'ikon-toska-192.png', 'ikon-toska-512.png', 'ikon-toska-180.png', 'ikon-toska-48.png', 'tajawal-regular.woff2'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(KULIT)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => {
